@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %} {% endblock %}</title>
+    {% load static %}
+    <link href="{% static 'css/head.css' %}" rel="stylesheet">
+</head>
+<body>
+<div class="navbar">
+    <nav>
+        <ul>
+            <li><a href="{% url 'core:main' %}">Главная</a></li>
+            <li><a href="{% url 'core:groups' %}">Группы</a></li>
+            <li><a href="{% url 'core:courses' %}">Курсы</a></li>
+            <li>
+                <div class="dropdown">
+                    <button class="dropdown-button">Пользователи</button>
+                    <div class="dropdown-content">
+                        <a href="{% url 'core:users' %}">Список пользователей</a>
+                        <a href="{% url 'core:user_create' %}">Создать пользователя</a>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </nav>
+</div>
+<main>
+    {% block content %}{% endblock %}
+</main>
+</body>
+</html>

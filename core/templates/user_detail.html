@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block title %} {{ title }} {% endblock %}
+{% block content %}
+    <h1>Профиль пользователя - {{ user.name }}</h1>
+    <h3>Группа пользователя - {{ user.group.name }}</h3>
+    <h3>Количество курсов -  {{user.course.count}}</h3>
+    Курсы:
+    <ul>
+        {% for course in user.course.all %}
+            <li>
+                {{ course.name }}
+            </li>
+        {% endfor %}
+    </ul>
+    <a href="{% url 'core:users' %}">Вернуться</a>
+{% endblock %}

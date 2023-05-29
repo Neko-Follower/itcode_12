@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block title %} {{ title }} {% endblock %}<
+{% block content %}
+    <h1>Удалить пользователя {{ user.name }}?</h1>
+    <form action="{% url 'core:user_delete' user.pk %}" method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Удалить</button>
+        <br>
+        <a href="{% url 'core:users' %}">Вернуться</a>
+    </form>
+{% endblock %}
